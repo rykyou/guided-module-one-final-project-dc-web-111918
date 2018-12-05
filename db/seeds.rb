@@ -1,32 +1,49 @@
-petco = Store.find_or_create_by(name: "Petco")
-bestbuy = Store.find_or_create_by(name: "Best Buy")
-wholefoods = Store.find_or_create_by(name: "Whole Foods")
-dicks = Store.find_or_create_by(name: "DICKS Sporting Goods")
-walgreens = Store.find_or_create_by(name: "Walgreens")
+# Item.destroy_all
+# Store.destroy_all
 
-banana = Item.find_or_create_by(name: "Banana")
-milk = Item.find_or_create_by(name: "Milk")
-bread = Item.find_or_create_by(name: "Bread")
-organic_granola = Item.find_or_create_by(name: "Organic Granola")
-free_range_eggs = Item.find_or_create_by(name: "Free Range Eggs")
-tv = Item.find_or_create_by(name: "TV")
-headphones = Item.find_or_create_by(name: "Headphones")
-video_game = Item.find_or_create_by(name: "Video Game")
-smart_watch = Item.find_or_create_by(name: "Smart Watch")
-phone_charger = Item.find_or_create_by(name: "Phone Charger")
-cleats = Item.find_or_create_by(name: "Cleats")
-football = Item.find_or_create_by(name: "Football")
-golf_club = Item.find_or_create_by(name: "Golf Club")
-soccer_net = Item.find_or_create_by(name: "Soccer Net")
-baseball = Item.find_or_create_by(name: "Baseball")
-prescription_drug = Item.find_or_create_by(name: "Prescription Medicine")
-comb = Item.find_or_create_by(name: "Comb")
-toothbrush = Item.find_or_create_by(name: "Toothbrush")
-candy = Item.find_or_create_by(name: "Candy")
-soda = Item.find_or_create_by(name: "Soda")
-dog_food = Item.find_or_create_by(name: "Dog Food")
-litterbox = Item.find_or_create_by(name: "Litterbox")
-leash = Item.find_or_create_by(name: "Leash")
+petco = Store.find_or_create_by(name: "petco")
+bestbuy = Store.find_or_create_by(name: "best buy")
+wholefoods = Store.find_or_create_by(name: "whole foods")
+dicks = Store.find_or_create_by(name: "dicks sporting goods")
+target = Store.find_or_create_by(name: "target")
 
 
-# StoreItem.find_or_create_by()
+milk = Item.find_or_create_by(name: "milk")
+organic_granola = Item.find_or_create_by(name: "organic granola")
+free_range_eggs = Item.find_or_create_by(name: "free range eggs")
+
+tv = Item.find_or_create_by(name: "tv")
+smart_watch = Item.find_or_create_by(name: "smart watch")
+phone_charger = Item.find_or_create_by(name: "phone charger")
+
+football = Item.find_or_create_by(name: "football")
+golf_club = Item.find_or_create_by(name: "golf club")
+baseball = Item.find_or_create_by(name: "baseball")
+
+toothbrush = Item.find_or_create_by(name: "toothbrush")
+candy = Item.find_or_create_by(name: "candy")
+soda = Item.find_or_create_by(name: "soda")
+
+dog_food = Item.find_or_create_by(name: "dog food")
+litterbox = Item.find_or_create_by(name: "litterbox")
+leash = Item.find_or_create_by(name: "leash")
+
+[tv, smart_watch, phone_charger].each do |product|
+  StoreItem.find_or_create_by(store: bestbuy, item: product)
+end
+
+[dog_food, litterbox, leash].each do |product|
+  StoreItem.create(store: petco, item: product)
+end
+
+[milk, organic_granola, free_range_eggs, candy, soda, toothbrush, dog_food].each do |product|
+  StoreItem.create(store: wholefoods, item: product)
+end
+
+[football, golf_club, baseball, smart_watch].each do |product|
+  StoreItem.create(store: dicks, item: product)
+end
+
+[milk, tv, smart_watch, phone_charger, football, toothbrush, candy, soda, leash].each do |product|
+  StoreItem.create(store: target, item: product)
+end
