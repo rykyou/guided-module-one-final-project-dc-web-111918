@@ -20,10 +20,11 @@ class Cli
   def get_user_input
     user_response = gets.strip.downcase
     if user_response == "done"
+      self.sort_list(self.user_list)
       puts "Here is your list:"
       user_list.collect {|user_item| puts user_item.name }
 
-      # self.done_listing_items
+
     elsif user_response == "exit"
       abort
     else
@@ -39,7 +40,15 @@ class Cli
   end
 
   def sort_list(array)
-    array.collect {|item_obj| item_obj.store }
+    hash = Hash.new(0)
+    new_array = array.collect {|item_obj| item_obj.stores }
+    binding.pry
+    new_array.each do |stores_for_an_item|
+      stores_for_an_item.each { |store| hash[store] += 1 }
+    end
+    binding.pry
+  end
+
 
 
 
