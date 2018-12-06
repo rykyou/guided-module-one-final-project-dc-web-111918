@@ -28,22 +28,22 @@ dog_food = Item.find_or_create_by(name: "dog food")
 litterbox = Item.find_or_create_by(name: "litterbox")
 leash = Item.find_or_create_by(name: "leash")
 
-[tv, smart_watch, phone_charger].each do |product|
-  StoreItem.find_or_create_by(store: bestbuy, item: product)
-end
-
-[dog_food, litterbox, leash].each do |product|
-  StoreItem.create(store: petco, item: product)
-end
-
-[milk, organic_granola, free_range_eggs, candy, soda, toothbrush, dog_food].each do |product|
-  StoreItem.create(store: wholefoods, item: product)
-end
-
-[football, golf_club, baseball, smart_watch].each do |product|
-  StoreItem.create(store: dicks, item: product)
-end
-
-[milk, tv, smart_watch, phone_charger, football, toothbrush, candy, soda, leash].each do |product|
-  StoreItem.create(store: target, item: product)
-end
+# [tv, smart_watch, phone_charger].each do |product|
+#   StoreItem.find_or_create_by(store: bestbuy, item: product)
+# end
+#
+# [dog_food, litterbox, leash].each do |product|
+#   StoreItem.create(store: petco, item: product)
+# end
+#
+# [milk, organic_granola, free_range_eggs, candy, soda, toothbrush, dog_food].each do |product|
+#   StoreItem.create(store: wholefoods, item: product)
+# end
+#
+# [football, golf_club, baseball, smart_watch].each do |product|
+#   StoreItem.create(store: dicks, item: product)
+# end
+#
+# [milk, tv, smart_watch, phone_charger, football, toothbrush, candy, soda, leash].each do |product|
+#   StoreItem.create(store: target, item: product)
+# end
