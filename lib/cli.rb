@@ -20,7 +20,9 @@ class Cli
   def get_user_input
     user_response = gets.strip.downcase
     if user_response == "done"
+      puts "Here is your list:"
       user_list.collect {|user_item| puts user_item.name }
+
       # self.done_listing_items
     elsif user_response == "exit"
       abort
@@ -36,7 +38,8 @@ class Cli
     end
   end
 
-  # def done_listing_items
+  def sort_list(array)
+    array.collect {|item_obj| item_obj.store }
 
 
 
