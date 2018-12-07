@@ -3,7 +3,7 @@ class Cli
 
   attr_writer :user_list
 
-#acts as reader method of @user_list if it is not empty. If empty, set @user_list to empty array
+#acts as reader method for @user_list if it isn't empty. If empty, set @user_list to empty array
   def user_list
     @user_list ||= []
   end
