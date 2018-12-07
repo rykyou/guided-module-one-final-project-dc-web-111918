@@ -1,6 +1,6 @@
 class Cli
-  #place where we write methods relating to interface of our app
-  attr_writer :user_list
+ #place where we write methods relating to interface of our app
+ attr_writer :user_list
 
   def user_list
     @user_list ||= []
@@ -68,6 +68,7 @@ class Cli
       self.list_of_store
     elsif user_input > self.user_list.size
       puts "Must be a number on the list. Please try again."
+
       self.list_of_store
     else
       user_input -= 1
@@ -75,12 +76,15 @@ class Cli
       items_array = self.user_list[user_input][1]
       puts "#{current_store.upcase}:"
       puts "-----------------------"
+
       counter = 0
       items_array.each do |item_obj|
         counter += 1
         puts "#{counter}. #{item_obj.name}"
       end
-      self.back_to_stores
+      puts ""
+    end
+  end
     end
   end
 
@@ -90,3 +94,6 @@ class Cli
   end
 
 end
+
+#picks out best store for user to go to:
+# new_hash = hash.key(hash.values.max)
