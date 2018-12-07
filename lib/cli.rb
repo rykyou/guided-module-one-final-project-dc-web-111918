@@ -51,20 +51,50 @@ class Cli
 
   def user_done
     self.sort_list(self.user_list)
-    puts "Here's our suggestions for stores that have the items you're looking for:"
+    puts "Here's our suggestions for stores that have the item(s) you're looking for:"
     counter = 0
     self.user_list.each do |store, v|
       counter += 1
-      puts "#{counter}. #{store.name}"
+      puts "#{counter}. #{store.name.upcase}"
     end
     self.list_of_store
   end
 
   def list_of_store
     puts "Enter number:"
+    self.exit_program
+    user_input = gets.strip.to_i
+    if user_input == 0
+      puts "Must be number on the list. Please try again."
+      self.list_of_store
+    elsif user_input > self.user_list.size
+      puts "Must be number on the list. Please try again."
+      self.list_of_store
+    else
+      user_input -= 1
+      current_store = self.user_list[user_input][0].name
+      items_array = self.user_list[user_input][1]
+      puts "#{current_store.upcase}:"
+      puts "-----------------------"
+      #output list of items for that store
+      counter = 0
+      items_array.each do |item_obj|
+        counter += 1
+        puts "#{counter}. #{item_obj.name}"
+      end
+      puts ""
+    end
+  end
+
+  def exit_program
     user_input = gets.strip
-    x = self.sort_list_to_hash(self.user_list)[user_input]
-    binding.pry
+    if user_input == 'exit'
+      abort
+    end
+  end
+
+  def back_to_stores
+
   end
 
 end
