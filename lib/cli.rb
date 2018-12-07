@@ -82,6 +82,7 @@ class Cli
     self.user_list = stores_items_hash.sort_by{|k,v| v.length}.reverse
   end
 
+#lists out suggestions for stores in order and gives option to see list for a store
   def suggestion_of_stores
     puts ""
     puts ""
@@ -100,6 +101,7 @@ class Cli
     self.list_for_chosen_store
   end
 
+#outputs list for store that was chosen
   def list_for_chosen_store
     user_input = gets.strip.to_i
     if user_input == 0 || user_input > self.user_list.size
@@ -123,12 +125,11 @@ class Cli
         counter += 1
         puts "#{counter}. #{item_obj.name}"
       end
-      # puts ""
     end
     self.options
   end
 
-
+#provides user with options of what to do and does what user specifies
   def options
     puts " __________________________________________________"
     puts "|Type one of the following:                        |"
