@@ -80,11 +80,13 @@ class Cli
         counter += 1
         puts "#{counter}. #{item_obj.name}"
       end
+      self.back_to_stores
     end
   end
 
   def back_to_stores
-
+    puts "Type 'back' to go back to the list of stores."
+    self.user_done
   end
 
 end
