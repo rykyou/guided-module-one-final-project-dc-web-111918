@@ -9,8 +9,11 @@ class Cli
 #greeting user and asking what they could like to do.
   def start
     puts "Hello Shopper! List out what you need to buy and we'll help you figure out which store you need to go to."
+    puts ""
     puts "After each item, hit 'return/enter' before proceeding on to the next item."
+    puts ""
     puts "Type in 'done' when you are finished and would like to see your completed list."
+    puts ""
     puts "Type 'exit' when you would like to leave the app."
     self.get_user_input
   end
