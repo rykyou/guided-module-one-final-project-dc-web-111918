@@ -85,8 +85,7 @@ class Cli
       puts ""
     end
   end
-    end
-  end
+
 
   def back_to_stores
     puts "Type 'back' to go back to the list of stores."
