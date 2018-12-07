@@ -6,6 +6,7 @@ class Cli
     @user_list ||= []
   end
 
+#greeting user and asking what they could like to do.
   def start
     puts "Hello Shopper! List out what you need to buy and we'll help you figure out which store you need to go to."
     puts "After each item, hit 'return/enter' before proceeding on to the next item."
@@ -14,9 +15,11 @@ class Cli
     self.get_user_input
   end
 
+#responding to user's input and directing them where they want to go.
   def get_user_input
     user_response = gets.strip.downcase
     if user_response == "done"
+      self.sort_list(self.user_list)
       self.user_done
     elsif user_response == "exit"
       abort
@@ -32,6 +35,7 @@ class Cli
     end
   end
 
+#
   def sort_list(item_list)
     #return an array of arrays that looks like [store_obj, [item_obj, item_obj]], [store_obj], [item_obj, item_obj]]
     # byebug
@@ -50,7 +54,6 @@ class Cli
   end
 
   def user_done
-    self.sort_list(self.user_list)
     puts "Here's our suggestions for stores that have the item(s) you're looking for:"
     counter = 0
     self.user_list.each do |store, v|
@@ -76,20 +79,34 @@ class Cli
       items_array = self.user_list[user_input][1]
       puts "#{current_store.upcase}:"
       puts "-----------------------"
-
+      #displays list of items under store
       counter = 0
       items_array.each do |item_obj|
         counter += 1
         puts "#{counter}. #{item_obj.name}"
       end
-      puts ""
+      # puts ""
     end
+    self.back_to_stores
   end
 
 
   def back_to_stores
-    puts "Type 'back' to go back to the list of stores."
-    self.user_done
+    puts "Type 'back' to go back to the list of stores, 'menu' to go back to main menu of app or press 'exit' to exit app."
+    user_input = gets.strip
+    if user_input == "back"
+      self.user_done
+      # counter = 0
+      # self.user_list.each do |store, v|
+      #   counter += 1
+      #   puts "#{counter}. #{store.name.upcase}"
+      #   self.list_of_store
+    elsif user_input == "menu"
+      self.user_list = []
+      self.start
+    else
+      abort
+    end
   end
 
 end
